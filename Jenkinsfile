@@ -1,13 +1,15 @@
 pipeline{
     agent any
 
+    environment {
+        SONAR_HOST_URL = 'http://localhost:9000'
+    }
+
     stages {
         stage ('checkout'){
             steps{
                 checkout scm
-            }
-            env {
-                SONAR_HOST_URL = 'http://localhost:9000'               
+            }             
         }
         stage ('Code scan'){
             steps{
@@ -38,6 +40,6 @@ pipeline{
             }
         }
 
+     
     }
-
 }
